@@ -36,6 +36,9 @@ def check_tickets():
 
             if int(n_tickets) > 0:
                 subprocess.run(["open", ticket_page])
+                subprocess.run(
+                    ["open", "https://forms.4daagse.nl/registratienummer-vergeten"]
+                )
         except Exception as e:
             print(
                 f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]Error: Element not found or took too long to load.",
