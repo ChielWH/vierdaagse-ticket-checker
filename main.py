@@ -1,5 +1,6 @@
 import subprocess
 
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
@@ -29,12 +30,17 @@ def check_tickets():
                 )
             )
             n_tickets = tickets.text.split(" ")[0]
-            print(f"{n_tickets} available")
+            print(
+                f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {n_tickets} available"
+            )
 
             if int(n_tickets) > 0:
                 subprocess.run(["open", ticket_page])
         except Exception as e:
-            print("Error: Element not found or took too long to load.", e)
+            print(
+                f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}]Error: Element not found or took too long to load.",
+                e,
+            )
 
 
 if __name__ == "__main__":
