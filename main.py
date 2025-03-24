@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
 
 
 def check_tickets():
@@ -16,7 +15,7 @@ def check_tickets():
     options.add_argument("--headless")
 
     with webdriver.Firefox(
-        service=Service(GeckoDriverManager().install()),
+        service=Service(executable_path="/tmp/geckodriver"),
         options=options,
     ) as driver:
         driver.get(ticket_page)
